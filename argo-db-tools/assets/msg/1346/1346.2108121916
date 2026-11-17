@@ -1,0 +1,35 @@
+$ Mission configuration for Npf(1346) FwRev BGCi_SUNA_PH_ICE 190520:
+$ AscentTimeOut(540) [min]
+$ AtDialCmd(AT+CBST=71,0,1;DT00881600005489) [primary]
+$ AltDialCmd(ATDT0012066163256) [alternate]
+$ BuoyancyNudge(30) [count]
+$ BuoyancyNudgeInitial(60) [count]
+$ ConnectTimeOut(60) [sec]
+$ CpActivationP(985) [dbar]
+$ DeepProfileDescentTime(270) [min]
+$ DeepProfileBuoyancyPos(151) [count]
+$ DeepProfilePressure(2000) [dbar]
+$ DownTime(14000) [min]
+$ FloatId(1346)
+$ FullExtension(880) [count]
+$ FullRetraction(50) [count]
+$ IsusInit(-1) [Enable<0, Disable=0, Enable&Init>0]
+$ HpvEmfK(2.03) [Volt-Sec/Radian]
+$ HpvRes(33) [Ohms]
+$ MaxAirBladder(127) [count]
+$ MaxLogKb(40) [KByte]
+$ MissionPrelude(360) [min]
+$ OkVacuum(98) [count]
+$ PActivationBuoyancyPosition(191) [count]
+$ ParkDescentTime(240) [min]
+$ ParkBuoyancyPos(304) [count]
+$ ParkPressure(1000) [dbar]
+$ PhBattMode(1)
+$ PnPCycleLen(1)
+$ TelemetryRetry(15) [min]
+$ TimeOfDay(DISABLED) [min]
+$ UpTime(660) [min]
+$ Verbosity(2)
+$ DebugBits(0x0002)
+$
+

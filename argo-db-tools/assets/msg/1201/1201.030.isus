@@ -1,0 +1,57 @@
+Profile: 1201.030 Thu Jun  3 17:07:24 2021
+H, SUNA Serial    Number , SN:1396
+H, Application      Name , SUNA-V2
+H, Firmware      Version , 2.2.14
+H, App Build        Date , Aug 30 2013, 10:43:21
+H, Operating        Mode , APF
+H, Power Up Time   (UTC) , 06/03/2021 17:07:03
+H, Current  Time   (UTC) , 06/03/2021 17:07:25
+H, Power Active  Timeout , 10
+H, Power Cycle   Counter , 30
+H, System Reset  Counter , 31
+H, Sample Record Counter , 1806
+H, Last Sample Rec. Time , 06/01/2021 22:19:18
+H, Error Record  Counter , 0
+H, Last Error Event Type , 0
+H, Last Error Event Time , 01/01/1970 00:00:00
+H, Fiberlite    Odometer , 0000:30:59
+H, Calibration      File , SNA1396B.CAL
+H, Spec Integration Time , 200
+H, Wavelength Fit  Range , 217.00 <-> 240.00
+H, Fitted Concentrations , 2
+H, Baseline        Model , 1
+H, Br Temp  Compensation , On
+H, Bromide Term in Model , will be FIXED (to external CTD value)
+H, Absorbance     Cutoff , 10.000000
+H, Zeiss Coefficient Vals, 1.892820e+02, 7.787630e-01, 1.411090e-04, -2.974520e-07
+# No error records to log.
+<EOP> : 1201.030 Thu Jun  3 17:08:01 2021
+H, SUNA Serial    Number , SN:1396
+H, Application      Name , SUNA-V2
+H, Firmware      Version , 2.2.14
+H, App Build        Date , Aug 30 2013, 10:43:21
+H, Operating        Mode , APF
+H, Power Up Time   (UTC) , 06/03/2021 17:07:03
+H, Current  Time   (UTC) , 06/03/2021 17:08:00
+H, Power Active  Timeout , 10
+H, Power Cycle   Counter , 30
+H, System Reset  Counter , 31
+H, Sample Record Counter , 1806
+H, Last Sample Rec. Time , 06/01/2021 22:19:18
+H, Error Record  Counter , 0
+H, Last Error Event Type , 0
+H, Last Error Event Time , 01/01/1970 00:00:00
+H, Fiberlite    Odometer , 0000:30:59
+H, Calibration      File , SNA1396B.CAL
+H, Spec Integration Time , 200
+H, Wavelength Fit  Range , 217.00 <-> 240.00
+H, Fitted Concentrations , 2
+H, Baseline        Model , 1
+H, Br Temp  Compensation , On
+H, Bromide Term in Model , will be FIXED (to external CTD value)
+H, Absorbance     Cutoff , 10.000000
+H, Zeiss Coefficient Vals, 1.892820e+02, 7.787630e-01, 1.411090e-04, -2.974520e-07
+# No error records to log.
+
+<EOT>
+
