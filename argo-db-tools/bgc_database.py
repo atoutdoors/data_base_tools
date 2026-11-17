@@ -1,9 +1,10 @@
 import requests
 import json
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 print("Load ENV")
-load_dotenv()
+load_dotenv(dotenv_path=Path(__file__).with_name('.env'))
 # Tools to interact with database
 
 
@@ -19,8 +20,8 @@ def update_deployment(FLOAT_SERIAL_NO, PLATFORM_TYPE, data):
 
     if response.status_code == 200:
         print('Sucessfully updated deployment')
-        return json.loads(response.content)
-    raise Exception('ERROR: ', response.status_code)
+        return json.loads(response.content) if response.content else None
+    raise Exception(f'ERROR: {response.status_code}: {response.text}')
 
 
 def post_deployment(data):
@@ -30,18 +31,17 @@ def post_deployment(data):
     if response.status_code == 201:
         #print('Sucessfully added deployment')
         return json.loads(response.content)
-    raise Exception('ERROR: ', response.content)
+    raise Exception(f'ERROR: {response.status_code}: {response.text}')
 
 
 def update_sensor(FLOAT_SERIAL_NO, PLATFORM_TYPE, SENSOR, data):
-    print(headers)
     response = requests.patch(BASE_URL+"/api/sensors", json=data, headers=headers,
                               params={"FLOAT_SERIAL_NO": FLOAT_SERIAL_NO, "PLATFORM_TYPE": PLATFORM_TYPE, "SENSOR": SENSOR})
 
     if response.status_code == 200:
         print('Sucessfully updated sensor')
-        return json.loads(response.content)
-    raise Exception('ERROR: ', response.status_code)
+        return json.loads(response.content) if response.content else None
+    raise Exception(f'ERROR: {response.status_code}: {response.text}')
 
 
 def add_sensor(FLOAT_SERIAL_NO, PLATFORM_TYPE, data):
@@ -51,9 +51,8 @@ def add_sensor(FLOAT_SERIAL_NO, PLATFORM_TYPE, data):
 
     if response.status_code == 201:
         print('Sucessfully created sensor')
-    else:
-        print('ERROR: ', response.status_code)
-        print(response.content)
+        return json.loads(response.content) if response.content else None
+    raise Exception(f'ERROR: {response.status_code}: {response.text}')
 
 
 def get_current_metadata(wmo):
