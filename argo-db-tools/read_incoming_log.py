@@ -60,6 +60,25 @@ def _number(value):
         return value
 
 
+def _labeled_digits(line, label):
+    """Return the digit value following a NAVIS label.
+
+    NAVIS checklogs have used several separators over time (``:``, ``=``
+    and bracketed values), and some versions insert spaces into ICCIDs.
+    Keep the label-specific match narrow so an unrelated number on the same
+    diagnostic line is not mistaken for the modem identifier.
+    """
+    match = re.search(
+        rf"{label}(?:[\s:=\[])*([0-9][0-9\s-]*[0-9]|[0-9])",
+        line,
+        re.IGNORECASE,
+    )
+    if not match:
+        return None
+    value = re.sub(r"[\s-]", "", match.group(1))
+    return value or None
+
+
 def _date(value):
     value = str(value).strip().strip('"').rstrip(",;")
     iso_date = re.search(r"(?<!\d)(\d{4}-\d{2}-\d{2})(?!\d)", value)
@@ -291,7 +310,7 @@ def _parse_optical_cal(path, sensor, sensor_name):
 def _parse_navis(lines, suna_cal_f, ph_cal_f=None, ocr_cal_f=None,
                  cdom_cal_f=None, chla_cal_f=None, bbp_cal_f=None):
     sensors = _base_sensors()
-    deployment = {}
+    deployment = {"BATTERY_VOLTAGE": 11.6}
     temp_cal, cndc_cal, pres_cal, doxy_cal = {}, {}, {}, {}
     serial = None
 
@@ -302,15 +321,12 @@ def _parse_navis(lines, suna_cal_f, ph_cal_f=None, ocr_cal_f=None,
         match = re.search(r"NAVIS version\D*(\d+)", line, re.I)
         if match:
             deployment["ROM_VERSION"] = match.group(1)
-        match = re.search(r"Modem ICCID:\s*(\d+)", line, re.I)
-        if match:
-            deployment["SIM"] = match.group(1)
-        match = re.search(r"Modem IMEI:\s*(\d+)", line, re.I)
-        if match:
-            deployment["IMEI"] = match.group(1)
-        match = re.search(r"Battery\s*\[\S*\s*([\d.]+)", line, re.I)
-        if match:
-            deployment["BATTERY_VOLTAGE"] = match.group(1)
+        value = _labeled_digits(line, r"(?:Modem\s+)?(?:ICCID|SIM)")
+        if value:
+            deployment["SIM"] = value
+        value = _labeled_digits(line, r"(?:Modem\s+)?IMEI")
+        if value:
+            deployment["IMEI"] = value
 
         match = re.search(r"SBE\s*41N\s*V\s*([\d.]+)\s*SERIAL\s*NO\.\s*(\d+)", line, re.I)
         if match:

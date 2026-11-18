@@ -40,7 +40,7 @@ Use raw Python strings for Windows paths. The leading `r` prevents backslashes s
 
 | Input | Used for |
 | --- | --- |
-| Incoming checklog | Float serial number, platform metadata, battery voltage when present, CTD coefficients, oxygen coefficients, and inline SUNA information |
+| Incoming checklog | Float serial number, platform metadata, NAVIS modem identifiers, CTD coefficients, oxygen coefficients, and inline SUNA information |
 | `sunacal` | Nitrate/SUNA coefficients, SUNA serial number, and calibration date |
 | `phcal` | pH serial number, K0 calibration date, K0/K2/f(P) coefficients |
 | `ctdcal` | SOLO CTD temperature, conductivity, and pressure coefficients |
@@ -63,6 +63,8 @@ opticscal = r"C:\calibration\MCOMSC-0540_CharSheets.pdf"
 ```
 
 The checklog is parsed first. If pH, OCR, SUNA, or optics paths are blank, the script asks for them interactively.
+
+For NAVIS floats, `BATTERY_VOLTAGE` is recorded as 11.6 V. NAVIS modem ICCID/SIM and IMEI values are accepted with common `:`, `=`, bracketed, and space-separated formatting.
 
 ## SOLO example
 
